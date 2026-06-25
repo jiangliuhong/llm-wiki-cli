@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+/*
+ * HeroUI v3 ships its styles via the `@heroui/react/styles` export, which
+ * resolves (under the `style` condition) to the `@heroui/styles` package —
+ * the full prebuilt stylesheet with all component styles + design tokens.
+ *
+ * Note: use the `styles` subpath WITHOUT a `.css` suffix; `styles.css` is not
+ * a defined export. Reference: https://www.heroui.com/docs/react/getting-started/frameworks
+ */
+@import "@heroui/react/styles";
+
+/*
+ * Tell Tailwind v4 to scan HeroUI's compiled dist for any utility classes the
+ * components reference (replaces the old v2/v3 `content` array / `@plugin`).
+ */
+@source "../node_modules/@heroui/react/dist/**/*.{js,ts,jsx,tsx}";
+
+/*
+ * HeroUI uses a `.dark` class on <html> for dark mode. Tailwind v4 needs the
+ * dark variant re-pointed at that class (default is `prefers-color-scheme`).
+ */
+@custom-variant dark (&:is(.dark *));
+
+html,
+body {
+  height: 100%;
+}
